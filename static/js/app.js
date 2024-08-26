@@ -23,10 +23,8 @@ function buildMetadata(sample) {
   });
 }
 
-// function to build both charts
 function buildCharts(sample) {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
-
     // Get the samples field
     let samples = data.samples;
 
@@ -39,7 +37,7 @@ function buildCharts(sample) {
     let otu_labels = result.otu_labels;
     let sample_values = result.sample_values;
 
-    // Build a Bubble Chart
+    // Build the Bubble Chart
     let bubbleData = [{
       x: otu_ids,
       y: sample_values,
@@ -52,23 +50,13 @@ function buildCharts(sample) {
       }
     }];
 
-    // Create the layout for the bubble chart
+    // Create the layout for the bubble chart (remove the duplicate declaration)
     let bubbleLayout = {
       title: "Bacteria Cultures Per Sample",
       margin: {t: 30},
       hovermode: "closest",
       xaxis: {title: "OTU ID"}
     };
-
-
-    // Create the layout for the bubble chart
-    let bubbleLayout = {
-      title: "Bacteria Cultures Per Sample",
-      margin: {t: 30},
-      hovermode: "closest",
-      xaxis: {title: "OTU ID"}
-    };
-
 
     // Render the Bubble Chart
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
@@ -76,8 +64,7 @@ function buildCharts(sample) {
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
     let yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
 
-    // Build a Bar Chart
-    // Don't forget to slice and reverse the input data appropriately
+    // Build the Bar Chart
     let barData = [{
       x: sample_values.slice(0, 10).reverse(),
       y: yticks,
@@ -96,7 +83,6 @@ function buildCharts(sample) {
     Plotly.newPlot("bar", barData, barLayout);
   });
 }
-
 function init() {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
     // Get the names field (sample IDs)
