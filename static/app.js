@@ -1,6 +1,6 @@
 // Build the metadata panel
 function buildMetadata(sample) {
-  d3.json("samples.json").then((data) => {
+  d3.json("Resources/samples.json").then((data) => {
 
     // get the metadata field
     let metadata = data.metadata;
@@ -24,7 +24,7 @@ function buildMetadata(sample) {
 }
 
 function buildCharts(sample) {
-  d3.json("samples.json").then((data) => {
+  d3.json("Resources/samples.json").then((data) => {
     // Get the samples field
     let samples = data.samples;
 
@@ -84,7 +84,7 @@ function buildCharts(sample) {
   });
 }
 function init() {
-  d3.json("samples.json").then((data) => {
+  d3.json("Resources/samples.json").then((data) => {
     // Get the names field (sample IDs)
     let sampleNames = data.names;
 
